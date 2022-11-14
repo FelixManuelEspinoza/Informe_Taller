@@ -12,6 +12,24 @@ namespace Entidades
         private string descripcion;
         private int stock;
 
+        public int P_codigo
+        {
+            set { codigo = value; }
+            get { return codigo; }
+        }
+
+        public String P_descripcion
+        {
+            set { descripcion = value; }
+            get { return descripcion; }
+        }
+
+        public int P_stock
+        {
+            get { return stock; }
+        }
+
+
         public Producto (int cod, string desc )
         {
             codigo = cod;
