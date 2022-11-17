@@ -7,18 +7,50 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Entidades; 
+using CapaInventario;
+using Entidades;
+
 
 namespace Informe_Taller
 {
     public partial class FormProductos : Form
     {
+        Producto NuevoProd;
+        Producto ProdExistente;
+        InvProducto invProducto = new InvProducto();
+        bool nuevo = true;
+        int fila;
+        
+        
+
 
 
         public FormProductos()
         {
             InitializeComponent();
+            
         }
+
+        private void LLenarDGV()
+        {
+            Dg_producto.Rows.Clear();
+
+            DataSet ds = new DataSet();
+            ds = invProducto.listadoProducto("Todos");
+
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                {
+                    Dg_producto.Rows.Add(dr[0].ToString(), dr[1], dr[2].ToString());
+                }
+            }
+
+            else
+                MessageBox.Show("No hay productos cargados en el sistema");
+        }
+
+
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -55,5 +87,9 @@ namespace Informe_Taller
 
         }
 
+        private void FormProductos_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

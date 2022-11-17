@@ -38,6 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Btn_Cargar = new System.Windows.Forms.Button();
             this.TB_mov_de_productos = new System.Windows.Forms.TabPage();
+            this.Lbl_Stock = new System.Windows.Forms.Label();
             this.BT_Aceptar = new System.Windows.Forms.Button();
             this.CB_Egreso = new System.Windows.Forms.CheckBox();
             this.CB_Ingreso = new System.Windows.Forms.CheckBox();
@@ -46,7 +47,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.Dg_producto = new System.Windows.Forms.DataGridView();
-            this.Lbl_Stock = new System.Windows.Forms.Label();
             this.TB_CargaProduc.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.TB_mov_de_productos.SuspendLayout();
@@ -160,6 +160,16 @@
             this.TB_mov_de_productos.Text = "Movimiento de Productos";
             this.TB_mov_de_productos.UseVisualStyleBackColor = true;
             // 
+            // Lbl_Stock
+            // 
+            this.Lbl_Stock.AutoSize = true;
+            this.Lbl_Stock.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_Stock.Location = new System.Drawing.Point(6, 109);
+            this.Lbl_Stock.Name = "Lbl_Stock";
+            this.Lbl_Stock.Size = new System.Drawing.Size(76, 25);
+            this.Lbl_Stock.TabIndex = 7;
+            this.Lbl_Stock.Text = "label7";
+            // 
             // BT_Aceptar
             // 
             this.BT_Aceptar.Location = new System.Drawing.Point(384, 36);
@@ -235,16 +245,6 @@
             this.Dg_producto.TabIndex = 1;
             this.Dg_producto.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dg_producto_CellContentClick);
             // 
-            // Lbl_Stock
-            // 
-            this.Lbl_Stock.AutoSize = true;
-            this.Lbl_Stock.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Stock.Location = new System.Drawing.Point(6, 109);
-            this.Lbl_Stock.Name = "Lbl_Stock";
-            this.Lbl_Stock.Size = new System.Drawing.Size(76, 25);
-            this.Lbl_Stock.TabIndex = 7;
-            this.Lbl_Stock.Text = "label7";
-            // 
             // FormProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -254,6 +254,7 @@
             this.Controls.Add(this.TB_CargaProduc);
             this.Name = "FormProductos";
             this.Text = "FormProductos";
+            this.Load += new System.EventHandler(this.FormProductos_Load);
             this.TB_CargaProduc.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

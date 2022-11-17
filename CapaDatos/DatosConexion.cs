@@ -4,18 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
-using System.Data.OleDb;
+using System.Data.SqlClient;
 
 namespace CapaDatos
 {
-    internal class DatosConexion
+    public class DatosConexion
     {
-        public OleDbConnection Connection;
+        protected SqlConnection Connection;
         public string CadenaConexion = @"Data Source=DESKTOP-417K253;Initial Catalog=ProductosMec;Integrated Security=True";
         
         public DatosConexion()
         {
-            Connection = new OleDbConnection(CadenaConexion);
+            Connection = new SqlConnection(CadenaConexion);
         }
 
         public void Abrirconexion()
