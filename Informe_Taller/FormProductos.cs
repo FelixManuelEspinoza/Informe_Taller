@@ -17,7 +17,7 @@ namespace Informe_Taller
     {
         Producto NuevoProd;
         Producto ProdExistente;
-        InvProducto invProducto = new InvProducto();
+        InvProducto ObjInvProducto = new InvProducto();
         bool nuevo = true;
         int fila;
         
@@ -28,6 +28,8 @@ namespace Informe_Taller
         public FormProductos()
         {
             InitializeComponent();
+            CrearDGV();
+            LLenarDGV();
             
         }
 
@@ -36,7 +38,7 @@ namespace Informe_Taller
             Dg_producto.Rows.Clear();
 
             DataSet ds = new DataSet();
-            ds = invProducto.listadoProducto("Todos");
+            ds = ObjInvProducto.listadoProducto("Todos");
 
             if (ds.Tables[0].Rows.Count > 0)
             {
@@ -50,6 +52,16 @@ namespace Informe_Taller
                 MessageBox.Show("No hay productos cargados en el sistema");
         }
 
+        private void CrearDGV ()
+        {
+            Dg_producto.Columns.Add("0", "codigo");
+            Dg_producto.Columns.Add("1", "descripcion");
+            Dg_producto.Columns.Add("2", "Stock");
+
+            Dg_producto.Columns[0].Width = 100;
+            Dg_producto.Columns[1].Width = 200;
+            Dg_producto.Columns[2].Width = 60;
+        }
 
 
         private void label1_Click(object sender, EventArgs e)
@@ -59,6 +71,12 @@ namespace Informe_Taller
 
         private void Btn_Cargar_Click(object sender, EventArgs e)
         {
+            int ngrabados = -1;
+
+            NuevoProd = new Producto(int.Parse(TB_Codigo.Text), TB_Propiedades.Text);
+            ngrabados = ObjInvProducto.abmProducto("Alta", NuevoProd);
+
+
             Producto NuevoProducto;
             NuevoProducto = new Producto(int.Parse(TB_Codigo.Text), TB_Propiedades.Text);
             label4.Text= NuevoProducto.P_codigo.ToString();

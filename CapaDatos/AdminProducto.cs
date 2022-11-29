@@ -16,19 +16,19 @@ namespace CapaDatos
             int resultado = -1;
             string orden = string.Empty;
             if (accion == "Alta")
-                orden = "insert into Producto values (" + ObjProducto.P_codigo +
-                    ",'" + ObjProducto.P_descripcion + "' , "+ObjProducto.P_stock + ");''";
+                orden = "insert into Producto (Codigo, Propiedades, Stock) values (" + ObjProducto.P_codigo +
+                    ",'" + ObjProducto.P_descripcion + "' , "+ObjProducto.P_stock + ");";
             
             if (accion == "Modificar")
                 orden = "update Producto set Descripion='" + ObjProducto.P_descripcion + "', Stock=" +
                ObjProducto.P_stock + "Where Codigo=" + ObjProducto.P_codigo + "; ";
               // falta la orden de borrar
             
-            SqlConnection cmd = new SqlConnection(orden );
+            SqlCommand cmd = new SqlCommand(orden, Connection);
             try
             {
                 Abrirconexion();
-                //resultado = cmd. ExecuteNonQuery();
+                resultado = cmd.ExecuteNonQuery();
             }
             catch (Exception e)
             {
@@ -47,12 +47,12 @@ namespace CapaDatos
         {
             string orden = string.Empty;
             if (cual != "Todos")
-                orden = "select * from Producto where CodProf = " + int.Parse(cual) + ";";
+                orden = "select * from Producto where Codigo = " + int.Parse(cual) + ";";
             else
-                orden = "select * from Productos;";
-            SqlConnection cmd = new SqlConnection(orden, Connection);
+                orden = "select * from Producto;";
+            SqlCommand cmd = new SqlCommand(orden, Connection);
             DataSet ds = new DataSet();
-            SqlConnection da = new SqlConnection();
+            SqlDataAdapter da = new SqlDataAdapter();
             try
             {
                 Abrirconexion();
@@ -62,7 +62,7 @@ namespace CapaDatos
             }
             catch (Exception e)
             {
-                throw new Exception("Error al listar producto", e);
+                throw new Exception("Error al listar productos", e);
             }
             finally
             {
